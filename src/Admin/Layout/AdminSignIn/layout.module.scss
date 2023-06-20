@@ -1,0 +1,21 @@
+.background {
+    height: 100vh;
+    background-image: url("../../../../public/image/wp2508415.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.box {
+    margin-top: 100px;
+    width: 500px;
+    background-color: #0993c4;
+    padding: 30px;
+    border-radius: 8px;
+}
