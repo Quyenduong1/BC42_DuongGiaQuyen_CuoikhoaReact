@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { signin } from '../../Slices/userSlice';
 import styles from './layout.module.scss'
 import { UserOutlined } from '@ant-design/icons';
@@ -38,7 +38,8 @@ function AdminLayout() {
      }
 
      if(user) {
-        return <Navigate to="/admin-signin" />
+        return <Navigate to="/admin" />
+        
       
      }
 
@@ -83,11 +84,11 @@ function AdminLayout() {
                 )}
               </div>
 
-              {error && <p> {error} </p>}
+              {error && <p> Tài khoản hoặc mật khẩu không đúng </p>}
               <button disabled={isLoading} className='btn btn-primary'>Submit</button>
             </form>
           </div>
-          {/* <Outlet /> */}
+          
         </div>
       </div>
     </div>

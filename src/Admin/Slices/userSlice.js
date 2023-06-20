@@ -7,7 +7,7 @@ export const signin = createAsyncThunk("user/signin", async (values) => {
   try {
     const data = await apiUserLogin(values);
     // Lưu thông tin user vào localStorage để giữ trạng thái đăng nhập
-    // localStorage.setItem("user", JSON.stringify(data.content));
+    localStorage.setItem("user", JSON.stringify(data.content));
     return data.content;
   } catch (error) {
     throw error.response?.data?.content;
@@ -15,8 +15,8 @@ export const signin = createAsyncThunk("user/signin", async (values) => {
 });
 
 const initialState = {
-  user:  null,
-  // user: JSON.parse(localStorage.getItem("user")) || null,
+//   user:  null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   isLoading: false,
   error: null,
   isAuth:JSON.parse(localStorage.getItem("isAuth"))
@@ -34,7 +34,7 @@ const userSlice = createSlice({
       return { ...state, isLoading: true, error: null };
     });
     builder.addCase(signin.fulfilled, (state, action) => {
-    //   localStorage.setItem("isAuth",JSON.stringify(true))
+      // localStorage.setItem("isAuth",JSON.stringify(true))
       return { ...state, isLoading: false, user: action.payload};
     });
     builder.addCase(signin.rejected, (state, action) => {
