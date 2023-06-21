@@ -84,7 +84,7 @@ function AdminLayout() {
                 )}
               </div>
 
-              {error && <p> Tài khoản hoặc mật khẩu không đúng </p>}
+              {error && <p> {error} </p>}
               <button disabled={isLoading} className='btn btn-primary'>Submit</button>
             </form>
           </div>

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { apiGetListCourse ,apiInfoCourse, apiAddCourse, apiDeleteCourse, apiUpdateCourse } from "../API/CourseAPI";
+import { apiGetListCourse , apiAddCourse, apiDeleteCourse, apiUpdateCourse } from "../API/CourseAPI";
 
 
 const initialState = {

@@ -21,7 +21,7 @@ export const apiDeleteUser = async(userId) => {
 
 // Update nguoi dung
 export const apiUpdateUser = async (userData) => {
-    const { data } = await axiosClient.post("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", userData);
+    const { data } = await axiosClient.put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", userData);
     return data;
   }
 
@@ -31,4 +31,8 @@ export const apiUpdateUser = async (userData) => {
     return data;
   }
 
-  
+  // List user
+  export const apiListUser = async (values) => {
+    const { data } = await axiosClient.get("  /QuanLyNguoiDung/LayDanhSachNguoiDung", values);
+    return data;
+  }

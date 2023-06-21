@@ -18,16 +18,11 @@ function LayoutSideBar() {
       },
 
       {
-        label: "Quản Lý Khóa Học",
-        icon: <AppstoreOutlined/>,
-        key: "/admin/quanlykhoahoc",
-      },
-
-      {
         label: "Quản Lý Người Dùng",
         icon: <UserAddOutlined/>,
         key: "/admin/quanlynguoidung",
       },
+      
       {
         label: "Ghi danh",
         icon: <FormOutlined />,

@@ -13,7 +13,7 @@ function App() {
 
 
         <Route path="/admin" element={<Main />}>
-          <Route path="/admin/quanlykhoahoc" element ={<PageCourse/>} />
+          <Route path="/admin" element ={<PageCourse/>} />
           <Route path="/admin/quanlynguoidung" element={<PageUser />} />
         </Route>
 
