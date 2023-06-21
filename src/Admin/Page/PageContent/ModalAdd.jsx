@@ -46,7 +46,7 @@ function ModalAdd() {
     resolver: yupResolver(schema),
   })
 
-  const { user, error, isLoading } = useSelector((state) => state.user);
+  const {  error, isLoading } = useSelector((state) => state.edit);
   const dispatch = useDispatch();
   const onSubmit = async (values) => {
     dispatch(addUser(values));
@@ -87,8 +87,9 @@ function ModalAdd() {
             <div>
               <div className=" mb-3 d-flex">
                 <input
+                
                   className="form-control"
-                  type="password"
+                  type={passShow ? "text" : "password"}
                   placeholder="mật khẩu"
                   {...register("matKhau")}
                 />
@@ -181,11 +182,13 @@ function ModalAdd() {
 
             {error && <p>{error}</p>}
             
-            <button disabled = {isLoading} className="btn btn-primary">Thêm</button>
-            <button className="btn btn-secondary" onClick={handleClose}>
-              Đóng
-            </button>
+            <Modal.Footer>
+                <button disabled = {isLoading} className="btn btn-primary">Thêm</button>
+                <button className="btn btn-secondary" onClick={handleClose}>Đóng</button>
+            </Modal.Footer>
           </Form>
+          
+          
         </Modal.Body>
       </Modal>
     </>

@@ -6,7 +6,7 @@ import editUser from "./Admin/Slices/addUser"
 const store = configureStore({
     reducer: {
         user: userSlice,
-        editUser,
+        edit: editUser,
 
     },
 });
