@@ -21,15 +21,16 @@ function PageCourse() {
 
 
   return (
-    <Space size={20}>
+    <div>
       <h3 className='text-center' style={{width:"1920px"}}>Quản lý khoá học</h3>
+      
       <Table columns={[{
         title:"tenKhoaHoc"
       }]}>
 
       </Table>
 
-    </Space>
+    </div>
 
     
   )

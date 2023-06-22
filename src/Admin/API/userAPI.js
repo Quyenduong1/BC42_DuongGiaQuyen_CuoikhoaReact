@@ -33,6 +33,6 @@ export const apiUpdateUser = async (userData) => {
 
   // List user
   export const apiListUser = async (values) => {
-    const { data } = await axiosClient.get("  /QuanLyNguoiDung/LayDanhSachNguoiDung", values);
+    const { data } = await axiosClient.get("/QuanLyNguoiDung/LayDanhSachNguoiDung", values);
     return data;
   }

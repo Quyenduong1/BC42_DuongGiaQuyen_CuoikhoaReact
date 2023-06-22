@@ -12,7 +12,7 @@ import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form"; 
-import addUser from "../../Slices/addUser";
+import { addCourse } from "../../Slices/addCourse";
 
 function ModalAdd() {
   const [show, setShow] = useState(false);
@@ -49,7 +49,7 @@ function ModalAdd() {
   const {  error, isLoading } = useSelector((state) => state.edit);
   const dispatch = useDispatch();
   const onSubmit = async (values) => {
-    dispatch(addUser(values));
+    dispatch(addCourse(values));
   }
 
   const onError = (errors) => {

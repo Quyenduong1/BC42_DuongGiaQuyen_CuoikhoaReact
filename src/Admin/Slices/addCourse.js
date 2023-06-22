@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { apiAddUser,apiDeleteUser,apiUpdateUser } from "../API/userAPI";
+import { apiAddCourse, apiDeleteCourse, apiUpdateCourse } from "../API/CourseAPI";
 
 //them
-export const addUser1 = createAsyncThunk("xuLyNguoiDung/addNguoiDung", async(values) => {
+export const addCourse = createAsyncThunk("course/add", async(values) => {
     try {
-        const data = await apiAddUser(values);
+        const data = await apiAddCourse(values);
         console.log(data);
         return data.content
         
@@ -14,9 +14,9 @@ export const addUser1 = createAsyncThunk("xuLyNguoiDung/addNguoiDung", async(val
 })
 
 //xóa
-export const deleteUser = createAsyncThunk("user/delete", async(values) => {
+export const deleteCourse = createAsyncThunk("course/delete", async(values) => {
     try {
-        const data = await apiDeleteUser(values);
+        const data = await apiDeleteCourse(values);
         return data.content
     } catch (error) {
         throw error.response?.data?.content;
@@ -24,58 +24,58 @@ export const deleteUser = createAsyncThunk("user/delete", async(values) => {
 })
 
 //update
-export const updateUser = createAsyncThunk("user/update", async(values) => {
+export const updateCourse = createAsyncThunk("course/update", async(values) => {
     try {
-        const data = await apiUpdateUser(values);
+        const data = await apiUpdateCourse(values);
         return data.content
     } catch (error) {
         throw error.response?.data?.content;
     }
 })
 const initialState = {
-    user: null,
+    course: null,
     isLoading: false,
     error: null,
 };
 
-const editUser = createSlice({
-    name: "xuLyNguoiDung",
+const editCourse = createSlice({
+    name: "course",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        //addUser
-        builder.addCase(addUser1.pending, (state) => {
+        //addCourse
+        builder.addCase(addCourse.pending, (state) => {
           return {...state, isLoading: true, error: null}
         });
-        builder.addCase(addUser1.fulfilled, (state, action) => {
+        builder.addCase(addCourse.fulfilled, (state, action) => {
           return {...state, isLoading: false, user: action.payload}
         });
-        builder.addCase(addUser1.rejected, (state, action) => {
+        builder.addCase(addCourse.rejected, (state, action) => {
           return {...state, isLoading: false, error: action.error.message};
         });
 
-        // deleteUser
-        builder.addCase(deleteUser.pending, (state) => {
+        // deleteCourse
+        builder.addCase(deleteCourse.pending, (state) => {
             return {...state, isLoading: true, error: null}
           });
-          builder.addCase(deleteUser.fulfilled, (state, action) => {
+          builder.addCase(deleteCourse.fulfilled, (state, action) => {
             return {...state, isLoading: false, user: action.payload}
           });
-          builder.addCase(deleteUser.rejected, (state, action) => {
+          builder.addCase(deleteCourse.rejected, (state, action) => {
             return {...state, isLoading: false, error: action.error.message};
           });
 
-          // updateUser
-          builder.addCase(updateUser.pending, (state) => {
+          // updateCourse
+          builder.addCase(updateCourse.pending, (state) => {
             return {...state, isLoading: true, error: null}
           });
-          builder.addCase(updateUser.fulfilled, (state, action) => {
+          builder.addCase(updateCourse.fulfilled, (state, action) => {
             return {...state, isLoading: false, user: action.payload}
           });
-          builder.addCase(updateUser.rejected, (state, action) => {
+          builder.addCase(updateCourse.rejected, (state, action) => {
             return {...state, isLoading: false, error: action.error.message};
           });
       }
 })
 
-export default editUser.reducer;
+export default editCourse.reducer;
