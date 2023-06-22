@@ -28,7 +28,7 @@ function PageUser() {
       try {
         const dataSearch = await apiSearchUser(value);
         setListUser(dataSearch);
-        console.log(dataSearch);
+        
       } catch (error) {
         console.log(error)
       }
@@ -41,8 +41,8 @@ function PageUser() {
     }
 
     const handleSearch = () => {
-      searchUser(setSearchValue);
-      getListUser();
+      setSearchValue(searchUser);
+      
     }
 
     useEffect(() => {
