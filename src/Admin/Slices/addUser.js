@@ -14,7 +14,7 @@ export const addUser1 = createAsyncThunk("xuLyNguoiDung/addNguoiDung", async(val
 })
 
 //xóa
-export const deleteUser = createAsyncThunk("user/delete", async(values) => {
+export const deleteUser = createAsyncThunk("xuLyNguoiDung/delete", async(values) => {
     try {
         const data = await apiDeleteUser(values);
         return data.content
@@ -24,7 +24,7 @@ export const deleteUser = createAsyncThunk("user/delete", async(values) => {
 })
 
 //update
-export const updateUser = createAsyncThunk("user/update", async(values) => {
+export const updateUser = createAsyncThunk("xuLyNguoiDung/update", async(values) => {
     try {
         const data = await apiUpdateUser(values);
         return data.content

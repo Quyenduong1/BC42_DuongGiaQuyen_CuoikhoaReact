@@ -1,8 +1,6 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import React from "react";
 import { useState } from "react";
-// import { useNavigate, useSearchParams } from "react-router-dom";
-// import { apiAddUser } from "../../API/userAPI";
 import { useSelector,useDispatch } from "react-redux";
 
 import *  as yup from "yup";
@@ -19,8 +17,7 @@ function ModalAdd() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [passShow, setPassShow] = useState(false);
-//   const navigate = useNavigate();
-//   const [searchParams] = useSearchParams();
+
 
   const schema = yup.object({
     taiKhoan: yup.string().required("không được để trống"),

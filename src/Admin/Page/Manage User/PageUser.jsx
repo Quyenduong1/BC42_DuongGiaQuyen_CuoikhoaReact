@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import ModalAdd from '../Manage User/ModalAdd'
 import { Input } from 'antd'
+import { apiListUser, apiSearchUser } from '../../API/userAPI';
 import { SearchOutlined } from '@ant-design/icons'
-import { apiListUser } from '../../API/userAPI';
-// import Pagination from 'rc-pagination';
 
 
 
@@ -11,23 +10,45 @@ import { apiListUser } from '../../API/userAPI';
 
 function PageUser() {
     const [listUser, setListUser] = useState([]);
-    console.log(listUser);
     const [errorAPI, setErrorAPI] = useState([]);
-    
+    const [show, setShow] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
+
    
     const getListUser = async(list) => {
       try {
         const data  = await apiListUser(list);
-        console.log(data);
         setListUser(data);
       } catch (error) {
         setErrorAPI(error);
       }
     }
 
+    const searchUser = async(value) => {
+      try {
+        const dataSearch = await apiSearchUser(value);
+        setListUser(dataSearch);
+        console.log(dataSearch);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    
+
+    const handleDelete = (values) => {
+      const deleteItem = listUser.filter(item => item.taiKhoan !== values)
+      setListUser(deleteItem);
+    }
+
+    const handleSearch = () => {
+      searchUser(setSearchValue);
+      getListUser();
+    }
+
     useEffect(() => {
-        getListUser()
-    },[])
+      getListUser();
+  },[])
+    
   return (
     <div style={{width:"100rem", margin:"auto"}}>
       <div className='card container-fluid'>
@@ -35,9 +56,15 @@ function PageUser() {
           <h2>User List</h2>
         </div>
 
-        <div className="d-flex mb-3">
-          <Input placeholder='Nhập tên để tìm kiếm' />
-          <button className='btn btn-primary'><SearchOutlined style={{alignItems:"center"}}/></button>
+        <div className="w-25 d-flex mb-3">
+          <Input
+            placeholder='Nhập tên TK để tìm kiếm'
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+          <button className='btn btn-primary' onClick={handleSearch}>
+              <SearchOutlined style={{alignItems:"center"}}/>
+          </button>
         </div>
 
         <div>
@@ -58,18 +85,18 @@ function PageUser() {
             </thead>
 
             <tbody>
-              {listUser?.data?.map((user,index)=> {
+              {listUser?.map((user,index)=> {
                 return (
                   <tr key={index}>
                    
                     <td>{user.taiKhoan}</td>
                     <td>{user.hoTen}</td>
                     <td>{user.email}</td>
-                    <td>{user.sdt}</td>
+                    <td>{user.soDt}</td>
                     <td>{user.maLoaiNguoiDung}</td>
                     <td>
                       <button className='btn btn-success'>Edit</button>
-                      <button className='btn btn-danger'>Delete</button>
+                      <button className='btn btn-danger' onClick={() => handleDelete(user.taiKhoan)}>Delete</button>
                     </td>
                   </tr>
                 )

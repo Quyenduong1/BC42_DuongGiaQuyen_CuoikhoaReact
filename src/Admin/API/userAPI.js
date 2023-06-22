@@ -36,3 +36,14 @@ export const apiUpdateUser = async (userData) => {
     const { data } = await axiosClient.get("/QuanLyNguoiDung/LayDanhSachNguoiDung", values);
     return data;
   }
+
+  // tim kiem user
+  export const apiSearchUser = async (value) => {
+    const { data } = await axiosClient.get("/QuanLyNguoiDung/TimKiemNguoiDung", {
+      params: {
+        MaNhom: "GP05",
+        tuKhoa: value,
+      }
+    });
+    return data;
+  }
